@@ -22,7 +22,7 @@ type Method interface {
 	Delete(i int)                // 删
 	GetLength() int              // 获取长度
 	Search(v interface{}) int    // 查
-	isNull() bool                // 判断是否为空
+	IsNull() bool                // 判断是否为空
 }
 
 // b 初始化函数
@@ -83,7 +83,7 @@ func (list *LList) Search(v interface{}) int {
 }
 
 // 判空
-func (list *LList) isNull() bool {
+func (list *LList) IsNull() bool {
 	curNode := list.Head.Next
 	if curNode == nil {
 		return true
@@ -101,11 +101,18 @@ func PrintList(list *LList) {
 	}
 }
 
+// e 两个链表相加
+func addTwoNumbers(l1List *LList, l2List *LList) *LList {
+	// 相加
+	fmt.Println("prepare to plus link")
+	return nil
+}
+
 // 想要被外部调用必须大写 类似于Public
 func RunLinkList() {
 	fmt.Println("practice link list")
 	lList := CreateList()
-	fmt.Println("lList is null = ", lList.isNull())
+	fmt.Println("lList is null = ", lList.IsNull())
 	var M Method
 	M = lList // 接口类型的变量可以存储所有实现该接口的类型变量
 	M.Insert(1, 3)
@@ -116,7 +123,7 @@ func RunLinkList() {
 	fmt.Println("List length is: ", lList.Length)
 	fmt.Println("元素6在位置：", M.Search(6))
 	fmt.Println("元素100在位置：", M.Search(100))
-	fmt.Println("List is null: ", lList.isNull())
+	fmt.Println("List is null: ", lList.IsNull())
 
 	M.Delete(2)
 	PrintList(lList)
